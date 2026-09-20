@@ -1,20 +1,17 @@
 return {
-    {
-        "folke/tokyonight.nvim",
-        lazy = true,
-        opts = { style = "moon" },
+  {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      styles = {
+        transparency = true,
+      },
     },
-    {
-        "rose-pine/neovim",
-        name = "rose-pine",
-        styles = {
-            transparency = true,
-        },
-    },
-    {
-        "LazyVim/LazyVim",
-        opts = {
-            colorscheme = "rose-pine",
-        },
-    },
+    config = function(_, opts)
+      require("rose-pine").setup(opts)
+      vim.cmd("colorscheme rose-pine")
+    end,
+  },
 }

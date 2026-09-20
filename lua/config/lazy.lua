@@ -1,4 +1,5 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
     local lazyrepo = "https://github.com/folke/lazy.nvim.git"
     local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
@@ -16,21 +17,15 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     spec = {
-        -- add LazyVim and import its plugins
-        { "LazyVim/LazyVim", import = "lazyvim.plugins" },
         { "wakatime/vim-wakatime", lazy = false },
-        -- { import = "lazyvim.plugins.extras.ui.mini-animate" },
-        -- import/override with your plugins
         { import = "plugins" },
     },
     defaults = {
-        lazy = true,
+        lazy = false,
         version = false,
-        -- version = "*", -- try installing the latest stable version for plugins that support semver
     },
-    install = { colorscheme = { "tokyonight", "habamax" } },
     checker = {
-        enabled = false, -- check for plugin updates periodically
+        enabled = true, -- check for plugin updates periodically
         notify = false, -- notify on update
     },
     performance = {

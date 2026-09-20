@@ -4,7 +4,7 @@ local map = vim.keymap.set
 map("n", "<leader>e", ":Ex<CR>", { desc = "Open netrw explorer" })
 map("n", "<leader>E", ":Sex<CR>", { desc = "Open netrw explorer" })
 
-map("n", "<leader>jj", ":Telescope find_files<cr>", { desc = "Find Files" })
+--map("n", "<leader>jj", ":Telescope find_files<cr>", { desc = "Find Files" })
 map("n", "<C-p>", ":Telescope git_files<cr>", { desc = "Git Files" })
 map("n", "<leader>js", function()
     require("telescope.builtin").grep_string({ search = vim.fn.expand("<cword>") })
@@ -213,3 +213,34 @@ vim.keymap.set("n", "<M-h>", "<cmd>silent !tmux neww tms -s 0<CR>")
 vim.keymap.set("n", "<M-t>", "<cmd>silent !tmux neww tms -s 1<CR>")
 vim.keymap.set("n", "<M-n>", "<cmd>silent !tmux neww tms -s 2<CR>")
 vim.keymap.set("n", "<M-s>", "<cmd>silent !tmux neww tms -s 3<CR>")
+
+local map = vim.keymap.set
+
+-- better up/down
+map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+
+-- Move to window using the <ctrl> hjkl keys
+map("n", "<C-h>", "<C-w>h", { desc = "Go to left window", remap = true })
+map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window", remap = true })
+map("n", "<C-k>", "<C-w>k", { desc = "Go to upper window", remap = true })
+map("n", "<C-l>", "<C-w>l", { desc = "Go to right window", remap = true })
+
+-- Resize window using <ctrl> arrow keys
+map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
+map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
+map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
+map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+
+-- Buffers
+map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
+map("n", "<leader>bd", "<cmd>bdelete<cr>", { desc = "Delete buffer" })
+
+-- Clear search with <esc>
+map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
+
+-- Save file
+map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
