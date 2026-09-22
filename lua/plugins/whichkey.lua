@@ -3,7 +3,7 @@ return {
     "folke/which-key.nvim",
     event = "VeryLazy",
     opts = {
-        preset = "modern", -- Gives you the modern which-key v3 UI
+        preset = "helix", -- Gives you the modern which-key v3 UI
     },
     config = function(_, opts)
         local wk = require("which-key")

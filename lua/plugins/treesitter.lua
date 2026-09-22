@@ -14,6 +14,7 @@ return {
             "python",
             "javascript",
             "typescript",
+            "tsx",
             "markdown",
             "markdown_inline",
             "bash",
