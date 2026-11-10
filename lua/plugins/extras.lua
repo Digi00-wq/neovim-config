@@ -9,7 +9,7 @@ return {
 
     {
         "IogaMaster/neocord",
-        event = "VeryLazy",
+        lazy = false,
         opts = {
             logo = "auto",
             show_time = true,

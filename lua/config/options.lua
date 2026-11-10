@@ -1,6 +1,7 @@
 -- Options are automatically loaded before lazy.nvim startup
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
+
 vim.o.guifont = "JetBrainsMono Nerd Font:h13"
 
 -- make tab spacing 4 chars
@@ -83,3 +84,6 @@ vim.g.netrw_winsize = 50
 -- languages
 vim.opt.spell = false
 vim.opt.spelllang = { "en", "de", "fr" }
+
+vim.opt.backupcopy = "yes" -- überschreibt die Datei direkt statt Rename-Trick
+vim.opt.autoread = true -- echte externe Änderungen automatisch neu laden
